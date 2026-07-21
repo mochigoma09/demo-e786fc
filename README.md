@@ -1,2 +1,3 @@
 # demo-e786fc
-Auto generated demo site for esthetic nail&amp;eyelash NaKid
+
+AIによって自動生成された esthetic nail&eyelash NaKid 様向けのデモサイトです。
