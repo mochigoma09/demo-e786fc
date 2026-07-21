@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- ============================================================
+     head.html — 全デモ共通の <head> 不変ブロック（SEO）。
+     各デモの <head> に必ず含める。{{...}} は案件情報で差し替え。
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>esthetic nail&eyelash NaKid｜ネイルサロン</title>
+<meta name="description" content="esthetic nail&eyelash NaKidは、荒川区で素の美しさを引き出すネイル・まつげサロン。穏やかな空間で、あなただけの輝きを丁寧に紡ぎます。">
+<link rel="canonical" href="https://mochigoma09.github.io/demo-e786fc/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="esthetic nail&eyelash NaKid">
+<meta property="og:title" content="esthetic nail&eyelash NaKid｜ネイルサロン">
+<meta property="og:description" content="esthetic nail&eyelash NaKidは、荒川区で素の美しさを引き出すネイル・まつげサロン。穏やかな空間で、あなただけの輝きを丁寧に紡ぎます。">
+<meta property="og:url" content="https://mochigoma09.github.io/demo-e786fc/">
+<meta property="og:image" content="">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="esthetic nail&eyelash NaKid｜ネイルサロン">
+<meta name="twitter:description" content="esthetic nail&eyelash NaKidは、荒川区で素の美しさを引き出すネイル・まつげサロン。穏やかな空間で、あなただけの輝きを丁寧に紡ぎます。">
+<meta name="twitter:image" content="">
+
+<!-- 構造化データ（BeautySalon は preset の schema.orgサブタイプ。住所/電話は実値へ） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://mochigoma09.github.io/demo-e786fc/#org", "name": "esthetic nail&eyelash NaKid", "url": "https://mochigoma09.github.io/demo-e786fc/" },
+    { "@type": "WebSite", "@id": "https://mochigoma09.github.io/demo-e786fc/#site", "url": "https://mochigoma09.github.io/demo-e786fc/", "name": "esthetic nail&eyelash NaKid", "publisher": { "@id": "https://mochigoma09.github.io/demo-e786fc/#org" } },
+    { "@type": "BeautySalon", "@id": "https://mochigoma09.github.io/demo-e786fc/#biz", "name": "esthetic nail&eyelash NaKid", "url": "https://mochigoma09.github.io/demo-e786fc/", "telephone": "03-5901-9196", "address": { "@type": "PostalAddress", "addressCountry": "JP", "addressRegion": "東京都", "addressLocality": "荒川区", "streetAddress": "東尾久６丁目４４−１４" } }
+  ]
+}
+</script>
+
+<!-- フォント（コンセプトで差し替え） / 土台CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=500;600&family=Zen+Kaku+Gothic+New:wght=400;500;700&family=Zen+Old+Mincho:wght=500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base/base.css">
+<!-- ↑ 案件コンセプトのトークンは、この後に <style>
+/* ============================================================
+   base.css — 全デモ共通の「不変の土台」（品質の担保。見た目の個性はここに持たせない）
+   各デモHTMLは必ずこれを読み込み、レイアウト/世界観は自由に作る。
+   固定するのは：リセット / トークンの“契約”（変数名）/ a11y / 再利用部品 のみ。
+   ============================================================ */
+
+/* --- デザイントークンの契約（値は案件コンセプトで :root を上書きする） --- */
+:root {
+  --color-primary: #1f3a5f;
+  --color-accent:  #b89150;
+  --color-text:    #2a2e35;
+  --color-bg:      #ffffff;
+  --color-surface: #f5f7fa;
+  --color-line:    rgba(0, 0, 0, 0.12);
+  --font-heading:  "Noto Serif JP", serif;
+  --font-body:     system-ui, -apple-system, "Noto Sans JP", sans-serif;
+  --radius:        14px;
+  --container:     1120px;
+}
+
+/* --- reset（wp-theme-starter から移植） --- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+img, svg, video, picture { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.4; }
+ul, ol { list-style: none; padding: 0; }
+
+/* --- a11y（不変） --- */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+
+/* --- 再利用部品（配色/形はトークン依存＝案件で変わる。構造だけ共通） --- */
+.l-wrapper { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 20px; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 32px; font-weight: 700; border-radius: 999px; color: #fff; background: var(--color-primary); transition: transform .25s, box-shadow .25s; }
+.c-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.15); }
+
+/* 全画面ハンバーガー（1024px以下） */
+.c-hamburger { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; position: relative; z-index: 1001; }
+.c-hamburger__bars, .c-hamburger__bars::before, .c-hamburger__bars::after { content: ""; display: block; width: 24px; height: 2px; background: var(--color-text); transition: transform .3s, opacity .3s; }
+.c-hamburger__bars { position: relative; }
+.c-hamburger__bars::before { position: absolute; top: -7px; left: 0; }
+.c-hamburger__bars::after  { position: absolute; top: 7px;  left: 0; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars { background: transparent; }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::before { transform: translateY(7px) rotate(45deg); }
+.c-hamburger[aria-expanded="true"] .c-hamburger__bars::after  { transform: translateY(-7px) rotate(-45deg); }
+.c-nav { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; font-family: var(--font-heading); font-size: 1.2rem; }
+.c-nav.is-open { opacity: 1; visibility: visible; }
+@media (min-width: 1025px) {
+  .c-hamburger { display: none; }
+  .c-nav { position: static; flex-direction: row; gap: 32px; background: none; backdrop-filter: none; opacity: 1; visibility: visible; font-size: 1rem; }
+}
+
+/* スクロールリビール（nav.jsがJSで付与する。JS無効環境では何も付かず常に表示） */
+.js-reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal.is-inview { opacity: 1; transform: none; }
+
+/* 追従フローティングCTA（1024px以下） */
+.c-floating-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 800; display: flex; justify-content: center; padding: 0 16px 14px; pointer-events: none; }
+.c-floating-cta .c-btn { pointer-events: auto; width: 100%; max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+body { padding-bottom: 84px; } /* CTA分の余白 */
+@media (min-width: 1025px) { .c-floating-cta { display: none; } body { padding-bottom: 0; } }
+
+</style>
+<style>:root{ --color-primary: ...; }</style> で上書きする -->
+<style>
+  :root {
+    --color-primary: #7C726B;
+    --color-accent: #DDBBB0;
+    --color-surface: #F8F5F2;
+    --color-text: #3D3631;
+    --font-heading: 'Cormorant Garamond', 'Zen Old Mincho', serif;
+    --font-body: 'Zen Kaku Gothic New', sans-serif;
+    --radius: 2px;
+    --container: 1080px;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  h2 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 600;
+    margin-bottom: 0.8em;
+  }
+
+  h3 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 500;
+    margin-bottom: 0.6em;
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1em;
+  }
+
+  .l-wrapper {
+    padding-inline: 24px;
+  }
+
+  .c-btn {
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    min-height: 56px;
+    padding: 16px 40px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+  }
+  .c-btn--outline {
+    background: none;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+  .c-btn--outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    transform: none;
+    box-shadow: none;
+  }
+  .c-btn:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 85%, black);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.1);
+  }
+
+  /* Header */
+  header {
+    background-color: var(--color-surface);
+    padding: 24px 0;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header__logo {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+  }
+  .header__logo span {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+  }
+  @media (min-width: 1025px) {
+    .c-nav a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      color: var(--color-text);
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .c-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+    .c-nav a:hover::after {
+      width: 100%;
+    }
+  }
+
+  /* Sections general */
+  section {
+    padding-block: clamp(60px, 12vw, 120px);
+    position: relative;
+    overflow: hidden;
+  }
+  section:nth-of-type(even) {
+    background-color: color-mix(in srgb, var(--color-surface) 95%, var(--color-accent));
+  }
+  .section__title {
+    text-align: center;
+    margin-bottom: clamp(40px, 8vw, 80px);
+    position: relative;
+  }
+  .section__title::before {
+    content: attr(data-en-title);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.03);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    white-space: nowrap;
+  }
+  .section__title h2 {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.2em;
+  }
+  .section__title p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-primary);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: var(--color-primary);
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+  }
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    color: var(--color-surface);
+    padding-block: 80px;
+    max-width: 1200px;
+    margin-left: auto;
+    padding-right: 24px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+  .hero__content h2 {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 600;
+    margin-bottom: 0.3em;
+    line-height: 1.1;
+    max-width: 600px;
+  }
+  .hero__content p {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    max-width: 500px;
+    margin-bottom: 2em;
+  }
+  .hero__content .c-btn {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
+  .hero__content .c-btn:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 80%, black);
+  }
+
+  /* Curve motif overlay */
+  .curve-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .curve-overlay--bottom-left::before {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-color: var(--color-surface);
+    border-radius: 0 0 50% 0 / 0 0 100% 0;
+    transform: rotate(5deg);
+    z-index: -1;
+  }
+  .curve-overlay--top-right::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 120%;
+    height: 120%;
+    background-color: var(--color-accent);
+    border-radius: 50% 0 0 0 / 100% 0 0 0;
+    transform: rotate(-5deg);
+    z-index: -1;
+  }
+  .curve-section-divider {
+    position: relative;
+    height: 80px;
+    background-color: var(--color-surface);
+  }
+  .curve-section-divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--color-surface) 95%, var(--color-accent));
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    transform: translateY(-50%);
+  }
+
+  /* Menu */
+  .menu__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .menu__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .menu__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background-color: var(--color-surface);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    position: relative;
+    overflow: hidden;
+  }
+  .menu__item::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-accent);
+    border-radius: 0 0 0 50%;
+    opacity: 0.3;
+  }
+  .menu__item h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .menu__item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .menu__item-price {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: right;
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Gallery */
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .gallery__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .gallery__grid > *:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery__grid > *:nth-child(4) { grid-column: span 2; }
+  }
+  .gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+  }
+  .gallery__item:hover img {
+    transform: scale(1.03);
+  }
+  .gallery__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  .gallery__item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: white;
+    padding: 12px;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .gallery__item:hover .gallery__item-caption {
+    transform: translateY(0);
+  }
+
+  /* Staff */
+  .staff__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-surface);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .staff__card::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 0;
+  }
+  .staff__card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  .staff__image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-accent);
+    box-shadow: 0 0 0 8px var(--color-surface);
+    position: relative;
+    z-index: 1;
+  }
+  .staff__name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.5em;
+  }
+  .staff__position {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: 1.5em;
+  }
+  .staff__description {
+    max-width: 600px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Voice */
+  .voice__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  @media (min-width: 768px) {
+    .voice__list {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+  .voice__item {
+    background-color: var(--color-surface);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    position: relative;
+    border-left: 4px solid var(--color-accent);
+  }
+  .voice__item::before {
+    content: "“";
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-accent);
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    line-height: 1;
+  }
+  .voice__text {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5em;
+    padding-left: 10px;
+  }
+  .voice__meta {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  /* Access */
+  .access__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .access__content {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+  .access__map {
+    width: 100%;
+    height: 300px;
+    background-color: #e0e0e0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+  }
+  .access__map::before {
+    content: 'Google Map Placeholder';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    color: #888;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+  }
+  .access__info {
+    padding-left: 20px;
+    border-left: 2px solid var(--color-accent);
+  }
+  .access__info dl {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .access__info dt {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-body);
+  }
+  .access__info dd {
+    font-family: var(--font-body);
+  }
+  .access__info .c-btn {
+    width: auto;
+    margin-top: 20px;
+  }
+
+  /* Reservation */
+  .reservation__inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .reservation__inner p {
+    font-size: 1.1rem;
+    margin-bottom: 2em;
+  }
+  .reservation__inner .c-btn {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 360px;
+  }
+  .reservation__notes {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .cta {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    text-align: center;
+  }
+  .cta__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .cta__inner h2 {
+    color: var(--color-surface);
+    margin-bottom: 0.6em;
+  }
+  .cta__inner p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5em;
+  }
+  .cta__inner .c-btn {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    width: 100%;
+    max-width: 400px;
+  }
+  .cta__inner .c-btn:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 80%, black);
+  }
+
+  /* Footer */
+  .footer {
+    background-color: var(--color-text);
+    color: var(--color-surface);
+    padding-block: 60px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+  .footer__logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-surface);
+    letter-spacing: 0.05em;
+  }
+  .footer__logo span {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+  .footer__nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin-bottom: 24px;
+  }
+  .footer__nav a {
+    color: var(--color-surface);
+    transition: color 0.3s ease;
+  }
+  .footer__nav a:hover {
+    color: var(--color-accent);
+  }
+</style>
+<style>:root{--color-primary:#7C726B;--color-accent:#DDBBB0;--color-surface:#F8F5F2;--color-text:#3D3631;--font-heading:'Cormorant Garamond', 'Zen Old Mincho', serif;--font-body:'Zen Kaku Gothic New', sans-serif;--radius:2px;}</style>
+</head>
+<body>
+  <h1 class="sr-only">esthetic nail&eyelash NaKid｜荒川区のネイル・まつげサロン</h1>
+
+  <header>
+    <div class="l-wrapper header__inner">
+      <a href="#" class="header__logo">
+        NaKid<span>esthetic nail&eyelash</span>
+      </a>
+      <nav id="nav" class="c-nav">
+        <ul>
+          <li><a href="#hero">TOP</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#staff">Staff</a></li>
+          <li><a href="#voice">Voice</a></li>
+          <li><a href="#access">Access</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+        </ul>
+      </nav>
+      <button class="c-hamburger js-nav-toggle" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="c-hamburger__bars"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section data-section="hero" class="hero">
+      <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHNlYXJjaHwxfHxzZXJlbmUlMjBiZWF1dHklMjBzYWxvbiUyMGF0bW9zcGhlcmV8ZW58MHwwfHx8MTc4NDYzMjg0Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="穏やかな光が差し込む美容サロンの室内" class="hero__bg">
+      <div class="hero__content l-wrapper">
+        <h2>素顔の輝きを、<br>丁寧に紡ぐ場所。</h2>
+        <p>荒川の日常に溶け込む、飾らない上質さ。NaKidは、お客様一人ひとりが持つ「素」の美しさを引き出し、内面から輝く自信と安らぎを提供します。</p>
+        <a href="#reservation" class="c-btn">ご予約はこちら</a>
+      </div>
+    </section>
+
+    <section data-section="menu" class="menu">
+      <div class="l-wrapper">
+        <div class="section__title" data-en-title="Menu">
+          <h2>メニュー</h2>
+          <p>あなたらしい美しさを引き出す、NaKidの多彩なサービス</p>
+        </div>
+        <div class="menu__grid">
+          <div class="menu__item">
+            <h3>ネイルケア</h3>
+            <p>爪本来の美しさを引き出す丁寧なケア。健康で美しい指先へ導きます。シンプルながらも洗練されたデザインをご提案いたします。</p>
+            <span class="menu__item-price">¥4,000〜</span>
+          </div>
+          <div class="menu__item">
+            <h3>ジェルネイル</h3>
+            <p>豊富なカラーとトレンドを取り入れたデザインで、指先を彩ります。日常に溶け込む上品なデザインから、特別な日の華やかなアートまで。</p>
+            <span class="menu__item-price">¥6,500〜</span>
+          </div>
+          <div class="menu__item">
+            <h3>まつげパーマ</h3>
+            <p>自まつげの魅力を最大限に引き出す、自然で美しいカール。目元をぱっちりと見せ、毎日のメイクを時短します。</p>
+            <span class="menu__item-price">¥5,500〜</span>
+          </div>
+          <div class="menu__item">
+            <h3>まつげエクステ</h3>
+            <p>お客様の目の形やご希望に合わせて、一本一本丁寧に装着。自然な仕上がりからボリュームアップまで、理想の目元を演出します。</p>
+            <span class="menu__item-price">¥8,000〜</span>
+          </div>
+          <div class="menu__item">
+            <h3>ハンドケア</h3>
+            <p>手肌の乾燥やくすみにアプローチ。しっとりとした潤いと透明感のある手肌へ。リラックス効果も期待できる丁寧なトリートメントです。</p>
+            <span class="menu__item-price">¥3,000〜</span>
+          </div>
+          <div class="menu__item">
+            <h3>フットケア</h3>
+            <p>足元の疲れを癒し、角質ケアで滑らかな足裏へ。自信を持ってサンダルを履ける、美しい足元へと導きます。</p>
+            <span class="menu__item-price">¥5,000〜</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="gallery" class="gallery">
+      <div class="l-wrapper">
+        <div class="section__title" data-en-title="Gallery">
+          <h2>ギャラリー</h2>
+          <p>NaKidが紡ぎ出す、洗練された美の世界</p>
+        </div>
+        <div class="gallery__grid">
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1566151764044-97c9a900b5ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxtaW5pbWFsaXN0JTIwbmFpbCUyMGFydCUyMGRldGFpbHxlbnwwfDB8fHwxNzg0NjMyMDc0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="ミニマリストなネイルアートのクローズアップ">
+            <div class="gallery__item-caption">Minimal Nail Art</div>
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1735151226446-1d364b4adc2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxkZWxpY2F0ZSUyMGV5ZWxhc2glMjBleHRlbnNpb25zJTIwY2xvc2UlMjB1cHxlbnwwfDB8fHwxNzg0NjMyODQxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="繊細なまつげエクステンションのクローズアップ">
+            <div class="gallery__item-caption">Delicate Eyelash</div>
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1659990668491-9bcdc5b06338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxtaW5pbWFsaXN0JTIwbmFpbCUyMGFydCUyMGRldGFpbHxlbnwwfDB8fHwxNzg0NjMyMDc0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="シンプルなネイルデザイン">
+            <div class="gallery__item-caption">Natural Nail Design</div>
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1639629509821-c54cdd984227?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxkZWxpY2F0ZSUyMGV5ZWxhc2glMjBleHRlbnNpb25zJTIwY2xvc2UlMjB1cHxlbnwwfDB8fHwxNzg0NjMyODQxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="まつげエクステの施術風景">
+            <div class="gallery__item-caption">Eyelash Extension</div>
+          </div>
+          <div class="gallery__item">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4OTk1ODZ8MHwxfHxzZXJlbmUlMjBiZWF1dHklMjBzYWxvbiUyMGF0bW9zcGhlcmV8ZW58MHwwfHx8MTc4NDYzMjg0Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="落ち着いた雰囲気のサロン内部">
+            <div class="gallery__item-caption">Salon Interior</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="staff" class="staff">
+      <div class="l-wrapper">
+        <div class="section__title" data-en-title="Staff">
+          <h2>スタッフ</h2>
+          <p>お客様の美しさを丁寧に引き出す、NaKidのプロフェッショナル</p>
+        </div>
+        <div class="staff__card">
+          <img src="https://placehold.jp/180x180.png" alt="スタッフの顔写真" class="staff__image">
+          <h3 class="staff__name">山田 華子</h3>
+          <p class="staff__position">トップネイリスト & アイリスト</p>
+          <p class="staff__description">お客様一人ひとりの個性とライフスタイルに合わせたデザインをご提案します。丁寧なカウンセリングと確かな技術で、内面から輝く美しさを引き出すお手伝いをさせていただきます。NaKidで心安らぐ時間をお過ごしください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="voice" class="voice">
+      <div class="l-wrapper">
+        <div class="section__title" data-en-title="Voice">
+          <h2>お客様の声</h2>
+          <p>NaKidで「素」の美しさを体験されたお客様からのメッセージ</p>
+        </div>
+        <div class="voice__list">
+          <div class="voice__item">
+            <p class="voice__text">初めてのまつげパーマで不安でしたが、とても丁寧に説明してくださり、安心して施術を受けられました。仕上がりも自然で、毎朝のメイクがとても楽になりました！</p>
+            <p class="voice__meta">30代 女性</p>
+          </div>
+          <div class="voice__item">
+            <p class="voice__text">落ち着いた空間で、リラックスしてネイルの施術を受けることができました。シンプルだけど上品なデザインで、周りからも褒められます。また次回のデザインが楽しみです。</p>
+            <p class="voice__meta">40代 女性</p>
+          </div>
+          <div class="voice__item">
+            <p class="voice__text">ハンドケアをお願いしました。ゴワつきが気になっていましたが、施術後は見違えるほどしっとり滑らかに。定期的に通って、手元の美しさを保ちたいです。</p>
+            <p class="voice__meta">50代 女性</p>
+          </div>
+          <div class="voice__item">
+            <p class="voice__text">まつげエクステで、いつも理想通りの仕上がりにしていただいています。持ちも良く、荒川でこんな素敵なサロンに出会えて嬉しいです！</p>
+            <p class="voice__meta">20代 女性</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="access" class="access">
+      <div class="l-wrapper">
+        <div class="section__title" data-en-title="Access">
+          <h2>アクセス</h2>
+          <p>荒川区東尾久、NaKidへの道案内</p>
+        </div>
+        <div class="access__content">
+          <div class="access__map">
+            <!-- Googleマップ埋め込みのプレースホルダー -->
+          </div>
+          <div class="access__info">
+            <h3>店舗情報</h3>
+            <dl>
+              <dt>店名</dt>
+              <dd>esthetic nail&eyelash NaKid</dd>
+              <dt>住所</dt>
+              <dd>〒116-0012 東京都荒川区東尾久６丁目４４−１４</dd>
+              <dt>営業時間</dt>
+              <dd>月〜金 10:00 - 19:00<br>土日祝 10:00 - 18:00</dd>
+              <dt>定休日</dt>
+              <dd>不定休</dd>
+              <dt>電話番号</dt>
+              <dd><a href="tel:0359019196">03-5901-9196</a></dd>
+            </dl>
+            <a href="#" class="c-btn c-btn--outline">Googleマップで開く</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="reservation" class="reservation">
+      <div class="l-wrapper reservation__inner">
+        <div class="section__title" data-en-title="Reservation">
+          <h2>ご予約</h2>
+          <p>NaKidでの特別な時間をご予約ください。オンライン予約またはお電話にて承っております。</p>
+        </div>
+        <a href="#" class="c-btn">オンライン予約</a>
+        <p class="reservation__notes">※ご予約は24時間オンラインで承っております。<br>※お電話でのご予約・お問い合わせも可能です。</p>
+      </div>
+    </section>
+
+    <section data-section="cta" class="cta">
+      <div class="l-wrapper cta__inner">
+        <h2>あなただけの「素」の美しさを、<br>NaKidで見つけませんか？</h2>
+        <p>飾らない上質さと丁寧な手仕事で、心身ともに満たされる美を提供いたします。まずはお気軽にご相談ください。</p>
+        <a href="#reservation" class="c-btn">ご予約・お問い合わせ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="l-wrapper">
+      <a href="#" class="footer__logo">
+        NaKid<span>esthetic nail&eyelash</span>
+      </a>
+      <nav class="footer__nav">
+        <ul>
+          <li><a href="#hero">TOP</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#staff">Staff</a></li>
+          <li><a href="#voice">Voice</a></li>
+          <li><a href="#access">Access</a></li>
+          <li><a href="#reservation">Reservation</a></li>
+        </ul>
+      </nav>
+      <p>&copy; <span id="y"></span> esthetic nail&eyelash NaKid All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="c-floating-cta">
+    <a href="#reservation" class="c-btn">ご予約はこちら</a>
+  </div>
+<script>
+/* nav.js — 全画面ハンバーガーの開閉（背後スクロールロック）。全デモ共通の不変挙動。 */
+(function () {
+  var t = document.querySelector('.js-nav-toggle');
+  var n = document.getElementById('nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', String(!open));
+      n.classList.toggle('is-open', !open);
+      document.body.style.overflow = open ? '' : 'hidden';
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { t.setAttribute('aria-expanded', 'false'); n.classList.remove('is-open'); document.body.style.overflow = ''; } });
+  }
+  var y = document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
+
+  /* スクロールリビール（抑制的モーション）：各 data-section の直下要素を
+     ふわっと表示。クラスはJSで付与するのでJS無効環境では常に見える。
+     prefers-reduced-motion は base.css 側の全体無効化が効く。 */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-inview'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('[data-section]').forEach(function (sec) {
+      var kids = Array.prototype.slice.call(sec.children);
+      kids.forEach(function (el, i) {
+        el.classList.add('js-reveal');
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        io.observe(el);
+      });
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
